@@ -13,9 +13,7 @@ import java.util.stream.Collectors;
             countTueWedThur(entries);
             weekendList(entries);
             weekdaySet(entries);
-//            printDurationGreaterThan10(entries);
-//            findMaxDuration(entries);
-            listGreaterThan50(entries);
+
         }
 
 
@@ -100,46 +98,22 @@ import java.util.stream.Collectors;
             Set<String> weekdays = new HashSet<>();
             // write for loop
             for(Entry entry : entries){
-                System.out.println(entry + ", ");
+              if(entry.getDay()!=Day.SATURDAY && entry.getDay() != Day.SUNDAY){
+                  weekdays.add(entry.getNote().toString());
+              }
             }
 
-//            System.out.println(weekdays);
-//            System.out.println("Stream, filter, map, collect:");
-//            weekdays = entries.stream().filter(date -> date.getDay() !=Day.SATURDAY && date.getDay()
-//            != Day.SUNDAY).map().collect(Collectors.toList());
-//                    System.out.println(weekdays);
-//            System.out.println();
-        }
-
-//        public static void printDurationGreaterThan10(List<Entry> entries){
-//            System.out.println("For Loop:");
-//            // write for loop
-//            System.out.println("Stream, filter, forEach:");
-//            // write stream
-//            System.out.println();
-//        }
-//
-//        public static void findMaxDuration(List<Entry> entries){
-//            System.out.println("For Loop:");
-//            int temp = 0;
-//            // write for loop
-//            System.out.println("The Max Duration is: " + temp);
-//            System.out.println("Stream, mapToInt, max, getAsInt:");
-//            temp = // write stream use mapToInt then max the getAsInt
-//                    System.out.println("The Max Duration is: " + temp);
-//            System.out.println();
-//        }
-
-        public static void listGreaterThan50(List<Entry> entries){
-            System.out.println("For Loop:");
-            List<Entry> greaterThan50 = new ArrayList<>();
-            // write for looop
-            System.out.println(greaterThan50);
-            System.out.println("Stream, filter, collect:");
-            // write stream
-            System.out.println(greaterThan50);
+           System.out.println(weekdays);
+           System.out.println("Stream, filter, map, collect:");
+           weekdays = entries.stream().filter(date -> date.getDay() !=Day.SATURDAY && date.getDay()
+            != Day.SUNDAY).map(Entry::getNote).collect(Collectors.toSet());
+                    System.out.println(weekdays);
             System.out.println();
         }
+
+
+
+
     }
 
 
